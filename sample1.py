@@ -5,7 +5,7 @@ import pickle
 import random
 from threading import Thread
 
-# Global variable (potential issue) 2
+# Global variable (potential issue) 3
 DATA_CACHE = {}
 
 def fetch_data_from_api(url):
