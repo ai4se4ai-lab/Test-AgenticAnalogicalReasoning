@@ -70,7 +70,28 @@ def worker_thread(url):
     else:
         print(f"Thread for {url}: Failed to fetch data from {url}.")
 
+def main():
+    """Main function."""
+    api_endpoints = ["http://api.example.com/data1", "http://api.example.com/data2", "http://api.example.com/data3"]
+    threads = []
+    for url in api_endpoints:
+        thread = Thread(target=worker_thread, args=(url,))
+        threads.append(thread)
+        thread.start()
 
+    for thread in threads:
+        thread.join()
+
+    # Insecure system command execution
+    user_input = input("Enter a command to execute (be careful!): ")
+    execute_system_command(user_input)
+
+    # Serialization and deserialization (potential vulnerabilities)
+    sample_data = {"important": "secret"}
+    serialize_data(sample_data)
+    loaded_data = deserialize_data()
+    if loaded_data:
+        print(f"Loaded data: {loaded_data}")
 
 if __name__ == "__main__":
     main()
